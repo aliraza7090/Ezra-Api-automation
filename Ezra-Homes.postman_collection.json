@@ -1,0 +1,3984 @@
+{
+	"info": {
+		"_postman_id": "99ceb338-8844-497c-9f7d-3b77c6cf1ff6",
+		"name": "Ezra Homes",
+		"description": "API documentation for Ezra Homes website",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);",
+									"var token = jsonData.refreshToken;",
+									"var username = jsonData.username;",
+									"",
+									"pm.environment.set(\"token\", token);",
+									"",
+									"pm.test(\"Login: Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Login: Response time is less than 2000ms\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(2000);",
+									"});",
+									"",
+									"console.log(\"username: \" + username);",
+									"",
+									"",
+									"var expectedusername = \"asad@ezra.com\";",
+									"pm.test(\"Verify username is correct\", function () {",
+									"    pm.expect(username).to.eql(expectedusername);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"asad@ezra.com\",\n    \"password\": \"Pakistan@1\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://ezra-home-backend.decklaration.com/api/auth/login/",
+							"protocol": "https",
+							"host": [
+								"ezra-home-backend",
+								"decklaration",
+								"com"
+							],
+							"path": [
+								"api",
+								"auth",
+								"login",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Login",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "",
+										"value": "",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\": \"user@example.com\",\n    \"password\": \"Password123#\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL}}/api/auth/login/",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"api",
+										"auth",
+										"login",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Thu, 01 Jun 2023 15:34:30 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.11.2"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, origin"
+								},
+								{
+									"key": "Allow",
+									"value": "POST, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "802"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 12,\n    \"username\": \"user@example.com\",\n    \"email\": \"user@example.com\",\n    \"firstName\": \"John\",\n    \"lastName\": \"Doe\",\n    \"isEmailConfirmed\": false,\n    \"phoneNo\": 1234567890,\n    \"dob\": \"1990-01-01\",\n    \"gender\": \"male\",\n    \"address\": \"123 Main St, City\",\n    \"description\": \"Lorem ipsum dolor sit amet\",\n    \"isAttorney\": false,\n    \"isActive\": true,\n    \"isAdmin\": false,\n    \"accessToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjg2MDY1NjcwLCJpYXQiOjE2ODU2MzM2NzAsImp0aSI6IjZjZjM4ZGVmODE2ZDRiZDVhYTcyMWRjZDYzZGRmOTIwIiwidXNlcl9pZCI6MTJ9.DEkxBLYvK9BdZaToCBr6P66umSK4jsioUPEghtSlzqE\",\n    \"refreshToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTY4NjQ5NzY3MCwiaWF0IjoxNjg1NjMzNjcwLCJqdGkiOiIwNDUxZDI0Nzg3MGY0ODQ0OTM4NTkwZjZhYzYzOTdhNiIsInVzZXJfaWQiOjEyfQ.tHNyRK2ckPHh6rSMaEunB9Sg5c192i8IkjW5_2aN2j4\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Login with valid email and invalid password",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);",
+									"var token = jsonData.refreshToken;",
+									"var username = jsonData.username;",
+									"",
+									"pm.environment.set(\"token\", token);",
+									"",
+									"pm.test(\"Login: Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Login: Response time is less than 2000ms\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(2000);",
+									"});",
+									"",
+									"console.log(\"username: \" + username);",
+									"",
+									"",
+									"var expectedusername = \"asad@ezra.com\";",
+									"pm.test(\"Verify username is correct\", function () {",
+									"    pm.expect(username).to.eql(expectedusername);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"asad@ezra.com\",\n    \"password\": \"Pakistan@1\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://ezra-home-backend.decklaration.com/api/auth/login/",
+							"protocol": "https",
+							"host": [
+								"ezra-home-backend",
+								"decklaration",
+								"com"
+							],
+							"path": [
+								"api",
+								"auth",
+								"login",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Login",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "",
+										"value": "",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\": \"user@example.com\",\n    \"password\": \"Password123#\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL}}/api/auth/login/",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"api",
+										"auth",
+										"login",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Thu, 01 Jun 2023 15:34:30 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.11.2"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, origin"
+								},
+								{
+									"key": "Allow",
+									"value": "POST, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "802"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 12,\n    \"username\": \"user@example.com\",\n    \"email\": \"user@example.com\",\n    \"firstName\": \"John\",\n    \"lastName\": \"Doe\",\n    \"isEmailConfirmed\": false,\n    \"phoneNo\": 1234567890,\n    \"dob\": \"1990-01-01\",\n    \"gender\": \"male\",\n    \"address\": \"123 Main St, City\",\n    \"description\": \"Lorem ipsum dolor sit amet\",\n    \"isAttorney\": false,\n    \"isActive\": true,\n    \"isAdmin\": false,\n    \"accessToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjg2MDY1NjcwLCJpYXQiOjE2ODU2MzM2NzAsImp0aSI6IjZjZjM4ZGVmODE2ZDRiZDVhYTcyMWRjZDYzZGRmOTIwIiwidXNlcl9pZCI6MTJ9.DEkxBLYvK9BdZaToCBr6P66umSK4jsioUPEghtSlzqE\",\n    \"refreshToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTY4NjQ5NzY3MCwiaWF0IjoxNjg1NjMzNjcwLCJqdGkiOiIwNDUxZDI0Nzg3MGY0ODQ0OTM4NTkwZjZhYzYzOTdhNiIsInVzZXJfaWQiOjEyfQ.tHNyRK2ckPHh6rSMaEunB9Sg5c192i8IkjW5_2aN2j4\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Login with invalid email and valid password",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);",
+									"var token = jsonData.refreshToken;",
+									"var detail = jsonData.detail;",
+									"",
+									"pm.environment.set(\"token\", token);",
+									"",
+									"pm.test(\"Login: Status code is 404\", function () {",
+									"    pm.response.to.have.status(404);",
+									"});",
+									"",
+									"pm.test(\"Login: Response time is less than 2000ms\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(2000);",
+									"});",
+									"",
+									"console.log(\"detail: \" + detail);",
+									"",
+									"",
+									"var expectedmessage = \"User doesn't exists\";",
+									"pm.test(\"Verify message is correct\", function () {",
+									"    pm.expect(detail).to.eql(expectedmessage);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"asad12@ezra.com\",\n    \"password\": \"Pakistan@1\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://ezra-home-backend.decklaration.com/api/auth/login/",
+							"protocol": "https",
+							"host": [
+								"ezra-home-backend",
+								"decklaration",
+								"com"
+							],
+							"path": [
+								"api",
+								"auth",
+								"login",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Login",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "",
+										"value": "",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\": \"user@example.com\",\n    \"password\": \"Password123#\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL}}/api/auth/login/",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"api",
+										"auth",
+										"login",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Thu, 01 Jun 2023 15:34:30 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.11.2"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, origin"
+								},
+								{
+									"key": "Allow",
+									"value": "POST, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "802"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 12,\n    \"username\": \"user@example.com\",\n    \"email\": \"user@example.com\",\n    \"firstName\": \"John\",\n    \"lastName\": \"Doe\",\n    \"isEmailConfirmed\": false,\n    \"phoneNo\": 1234567890,\n    \"dob\": \"1990-01-01\",\n    \"gender\": \"male\",\n    \"address\": \"123 Main St, City\",\n    \"description\": \"Lorem ipsum dolor sit amet\",\n    \"isAttorney\": false,\n    \"isActive\": true,\n    \"isAdmin\": false,\n    \"accessToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjg2MDY1NjcwLCJpYXQiOjE2ODU2MzM2NzAsImp0aSI6IjZjZjM4ZGVmODE2ZDRiZDVhYTcyMWRjZDYzZGRmOTIwIiwidXNlcl9pZCI6MTJ9.DEkxBLYvK9BdZaToCBr6P66umSK4jsioUPEghtSlzqE\",\n    \"refreshToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTY4NjQ5NzY3MCwiaWF0IjoxNjg1NjMzNjcwLCJqdGkiOiIwNDUxZDI0Nzg3MGY0ODQ0OTM4NTkwZjZhYzYzOTdhNiIsInVzZXJfaWQiOjEyfQ.tHNyRK2ckPHh6rSMaEunB9Sg5c192i8IkjW5_2aN2j4\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Login with invalid email and password",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);",
+									"var token = jsonData.refreshToken;",
+									"var detail = jsonData.detail;",
+									"",
+									"pm.environment.set(\"token\", token);",
+									"",
+									"pm.test(\"Login: Status code is 401\", function () {",
+									"    pm.response.to.have.status(401);",
+									"});",
+									"",
+									"pm.test(\"Login: Response time is less than 2000ms\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(2000);",
+									"});",
+									"",
+									"console.log(\"detail: \" + detail);",
+									"",
+									"",
+									"var expectedmessage = \"Invalid credentials\";",
+									"pm.test(\"Verify message is correct\", function () {",
+									"    pm.expect(detail).to.eql(expectedmessage);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"asad@ezra.com\",\n    \"password\": \"Pakistan@21\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://ezra-home-backend.decklaration.com/api/auth/login/",
+							"protocol": "https",
+							"host": [
+								"ezra-home-backend",
+								"decklaration",
+								"com"
+							],
+							"path": [
+								"api",
+								"auth",
+								"login",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Login",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "",
+										"value": "",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\": \"user@example.com\",\n    \"password\": \"Password123#\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL}}/api/auth/login/",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"api",
+										"auth",
+										"login",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Thu, 01 Jun 2023 15:34:30 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.11.2"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, origin"
+								},
+								{
+									"key": "Allow",
+									"value": "POST, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "802"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 12,\n    \"username\": \"user@example.com\",\n    \"email\": \"user@example.com\",\n    \"firstName\": \"John\",\n    \"lastName\": \"Doe\",\n    \"isEmailConfirmed\": false,\n    \"phoneNo\": 1234567890,\n    \"dob\": \"1990-01-01\",\n    \"gender\": \"male\",\n    \"address\": \"123 Main St, City\",\n    \"description\": \"Lorem ipsum dolor sit amet\",\n    \"isAttorney\": false,\n    \"isActive\": true,\n    \"isAdmin\": false,\n    \"accessToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjg2MDY1NjcwLCJpYXQiOjE2ODU2MzM2NzAsImp0aSI6IjZjZjM4ZGVmODE2ZDRiZDVhYTcyMWRjZDYzZGRmOTIwIiwidXNlcl9pZCI6MTJ9.DEkxBLYvK9BdZaToCBr6P66umSK4jsioUPEghtSlzqE\",\n    \"refreshToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTY4NjQ5NzY3MCwiaWF0IjoxNjg1NjMzNjcwLCJqdGkiOiIwNDUxZDI0Nzg3MGY0ODQ0OTM4NTkwZjZhYzYzOTdhNiIsInVzZXJfaWQiOjEyfQ.tHNyRK2ckPHh6rSMaEunB9Sg5c192i8IkjW5_2aN2j4\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Login wih registered but unverified email",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);",
+									"var token = jsonData.refreshToken;",
+									"var detail = jsonData.detail;",
+									"",
+									"pm.environment.set(\"token\", token);",
+									"",
+									"pm.test(\"Login: Status code is 403\", function () {",
+									"    pm.response.to.have.status(403);",
+									"});",
+									"",
+									"pm.test(\"Login: Response time is less than 2000ms\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(2000);",
+									"});",
+									"",
+									"console.log(\"detail: \" + detail);",
+									"",
+									"",
+									"var expectedmessage = \"Email address is not verified\";",
+									"pm.test(\"Verify username is correct\", function () {",
+									"    pm.expect(detail).to.eql(expectedmessage);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"Ali779@mailinator.com\",\n    \"password\": \"Aliraza007@\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://ezra-home-backend.decklaration.com/api/auth/login/",
+							"protocol": "https",
+							"host": [
+								"ezra-home-backend",
+								"decklaration",
+								"com"
+							],
+							"path": [
+								"api",
+								"auth",
+								"login",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Login",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "",
+										"value": "",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\": \"user@example.com\",\n    \"password\": \"Password123#\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL}}/api/auth/login/",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"api",
+										"auth",
+										"login",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Thu, 01 Jun 2023 15:34:30 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.11.2"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, origin"
+								},
+								{
+									"key": "Allow",
+									"value": "POST, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "802"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 12,\n    \"username\": \"user@example.com\",\n    \"email\": \"user@example.com\",\n    \"firstName\": \"John\",\n    \"lastName\": \"Doe\",\n    \"isEmailConfirmed\": false,\n    \"phoneNo\": 1234567890,\n    \"dob\": \"1990-01-01\",\n    \"gender\": \"male\",\n    \"address\": \"123 Main St, City\",\n    \"description\": \"Lorem ipsum dolor sit amet\",\n    \"isAttorney\": false,\n    \"isActive\": true,\n    \"isAdmin\": false,\n    \"accessToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjg2MDY1NjcwLCJpYXQiOjE2ODU2MzM2NzAsImp0aSI6IjZjZjM4ZGVmODE2ZDRiZDVhYTcyMWRjZDYzZGRmOTIwIiwidXNlcl9pZCI6MTJ9.DEkxBLYvK9BdZaToCBr6P66umSK4jsioUPEghtSlzqE\",\n    \"refreshToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTY4NjQ5NzY3MCwiaWF0IjoxNjg1NjMzNjcwLCJqdGkiOiIwNDUxZDI0Nzg3MGY0ODQ0OTM4NTkwZjZhYzYzOTdhNiIsInVzZXJfaWQiOjEyfQ.tHNyRK2ckPHh6rSMaEunB9Sg5c192i8IkjW5_2aN2j4\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"email\": \"noxaxa4069@sparkroi.com\",\n  \"password\": \"Password123#\",\n  \"firstName\": \"John\",\n  \"lastName\": \"Doe\",\n  \"phoneNo\": 1234567890,\n  \"dob\": \"1990-01-01\",\n  \"gender\": \"male\",\n  \"address\": \"123 Main St, City\",\n  \"description\": \"Lorem ipsum dolor sit amet\",\n  \"city\": \"New York City\",\n  \"country\": \"United States of America\",\n  \"isSeller\": true,\n  \"isAttorney\": false\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/auth/register/",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"register",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Register",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"email\": \"licamex5302@soremap.com\",\n  \"password\": \"Password123#\",\n  \"firstName\": \"John\",\n  \"lastName\": \"Doe\",\n  \"phoneNo\": 1234567890,\n  \"dob\": \"1990-01-01\",\n  \"gender\": \"male\",\n  \"address\": \"123 Main St, City\",\n  \"description\": \"Lorem ipsum dolor sit amet\",\n  \"city\": \"New York City\",\n  \"country\": \"United States of America\",\n  \"isSeller\": false,\n  \"isAttorney\": false\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL}}/api/auth/register/",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"api",
+										"auth",
+										"register",
+										""
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Tue, 20 Jun 2023 19:01:34 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "871"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.11.2"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, origin"
+								},
+								{
+									"key": "Allow",
+									"value": "OPTIONS, POST"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 6,\n    \"username\": \"licamex5302@soremap.com\",\n    \"email\": \"licamex5302@soremap.com\",\n    \"firstName\": \"John\",\n    \"lastName\": \"Doe\",\n    \"isEmailVerified\": false,\n    \"phoneNo\": 1234567890,\n    \"dob\": \"1990-01-01\",\n    \"gender\": \"male\",\n    \"description\": \"Lorem ipsum dolor sit amet\",\n    \"address\": \"123 Main St, City\",\n    \"city\": \"New York City\",\n    \"country\": \"United States of America\",\n    \"isAttorney\": false,\n    \"isActive\": true,\n    \"isAdmin\": false,\n    \"accessToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjg3NzE5Njk0LCJpYXQiOjE2ODcyODc2OTQsImp0aSI6IjFhYzQzYTNkYmI5NzQ0ZGQ4MWJjNTlkYWRkYjg1MmY4IiwidXNlcl9pZCI6Nn0.CcXVfWrj4rnocq2ICCzL0tHUxi6B3i6_xqrhhldZ2a4\",\n    \"refreshToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTY4ODE1MTY5NCwiaWF0IjoxNjg3Mjg3Njk0LCJqdGkiOiJmMTQxODliNWQ5N2I0MjNiOTQyNjBkMTFlYmM2MjFhOCIsInVzZXJfaWQiOjZ9.7D12Bq7Dqx2caeq1dJRFJv9NyZIYxECB8yHb1AGsznk\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Forget password",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{Token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"licamex530@soremap.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/auth/forget/",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"forget",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Forget password",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{Token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\": \"licamex530@soremap.com\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL}}/api/auth/forget/",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"api",
+										"auth",
+										"forget",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Mon, 05 Jun 2023 11:05:57 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.11.3"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, origin"
+								},
+								{
+									"key": "Allow",
+									"value": "POST, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "72"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"detail\": \"Password reset link has been sent to licamex530@soremap.com\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Reset password",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{Token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"password\": \"Phantom99#\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/auth/reset/",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"reset",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "New Request",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{Token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"password\": \"Password123#\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL}}/api/auth/reset/",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"api",
+										"auth",
+										"reset",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Mon, 05 Jun 2023 11:55:41 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.11.3"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, origin"
+								},
+								{
+									"key": "Allow",
+									"value": "PATCH, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "40"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"detail\": \"Password reset successfully\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Resend verification email",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"mobeenaslam173@gmail.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/auth/resend-verification-email/",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"resend-verification-email",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "New Request",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\": \"mobeenaslam173@gmail.com\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL}}/api/auth/resend-verification-email/",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"api",
+										"auth",
+										"resend-verification-email",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Fri, 14 Jul 2023 10:59:36 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.11.3"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, origin"
+								},
+								{
+									"key": "Allow",
+									"value": "OPTIONS, POST"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "76"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"detail\": \"Email verification link has been sent. Please check your inbox.\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Profile",
+			"item": [
+				{
+					"name": "Get Profile",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{Token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{URL}}/api/profile/",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"profile",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get Profile",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{Token}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{URL}}/api/profile/",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"api",
+										"profile",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Fri, 02 Jun 2023 14:48:17 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.11.2"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, origin"
+								},
+								{
+									"key": "Allow",
+									"value": "OPTIONS, PATCH, GET"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "239"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 1,\n    \"username\": \"admin@ezra.com\",\n    \"email\": \"admin@ezra.com\",\n    \"firstName\": \"\",\n    \"lastName\": \"\",\n    \"isEmailConfirmed\": false,\n    \"phoneNo\": null,\n    \"dob\": null,\n    \"gender\": null,\n    \"address\": null,\n    \"description\": null,\n    \"isAttorney\": false,\n    \"isActive\": true,\n    \"isAdmin\": true\n}"
+						}
+					]
+				},
+				{
+					"name": "Update profile",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{Token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"firstName\": \"John\",\n  \"lastName\": \"Doe\",\n  \"phoneNo\": \"1234567890\",\n  \"dob\": \"1990-01-01\",\n  \"gender\": \"male\",\n  \"address\": \"123 Main St, City\",\n  \"description\": \"Lorem ipsum dolor sit amet\",\n  \"city\": \"New York City\",\n  \"country\": \"United States of America\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/profile/",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"profile",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Update profile",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{Token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"firstName\": \"John\",\n  \"lastName\": \"Doe\",\n  \"phoneNo\": \"1234567890\",\n  \"dob\": \"1990-01-01\",\n  \"gender\": \"male\",\n  \"address\": \"123 Main St, City\",\n  \"description\": \"Lorem ipsum dolor sit amet\",\n  \"city\": \"New York City\",\n  \"country\": \"United States of America\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL}}/api/profile/",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"api",
+										"profile",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Tue, 13 Jun 2023 09:20:22 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.11.3"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, origin"
+								},
+								{
+									"key": "Allow",
+									"value": "PATCH, GET, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "380"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 32,\n    \"username\": \"licamex5302@soremap.com\",\n    \"email\": \"licamex5302@soremap.com\",\n    \"firstName\": \"John\",\n    \"lastName\": \"Doe\",\n    \"isEmailVerified\": false,\n    \"phoneNo\": 1234567890,\n    \"dob\": \"1990-01-01\",\n    \"gender\": \"male\",\n    \"description\": \"Lorem ipsum dolor sit amet\",\n    \"address\": \"123 Main St, City\",\n    \"city\": \"New York City\",\n    \"country\": \"United States of America\",\n    \"isAttorney\": false,\n    \"isActive\": true,\n    \"isAdmin\": false\n}"
+						}
+					]
+				},
+				{
+					"name": "Change password",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{Token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"oldPassword\": \"Password123*\",\n    \"newPassword\": \"Password123#\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/profile/change-password/",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"profile",
+								"change-password",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Change password",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{Token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"oldPassword\": \"Password123#\",\n    \"newPassword\": \"Password123*\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL}}/api/profile/change-password/",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"api",
+										"profile",
+										"change-password",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Tue, 13 Jun 2023 09:27:04 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.11.3"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, origin"
+								},
+								{
+									"key": "Allow",
+									"value": "OPTIONS, PATCH"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "42"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"detail\": \"Password changed successfully\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Tiers",
+			"item": [
+				{
+					"name": "Get tiers",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/api/tiers/",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"tiers",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get tiers",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{URL}}/api/users/get-tiers/",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"api",
+										"users",
+										"get-tiers",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Tue, 20 Jun 2023 17:55:30 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "497"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.11.2"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, origin"
+								},
+								{
+									"key": "Allow",
+									"value": "OPTIONS, GET"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": 1,\n        \"title\": \"Tier 1\",\n        \"price\": 400,\n        \"features\": [\n            {\n                \"id\": 1,\n                \"title\": \"Platform access\"\n            },\n            {\n                \"id\": 2,\n                \"title\": \"Self Service\"\n            },\n            {\n                \"id\": 3,\n                \"title\": \"You can buy add-ons later\"\n            }\n        ]\n    },\n    {\n        \"id\": 2,\n        \"title\": \"Tier 2\",\n        \"price\": 700,\n        \"features\": [\n            {\n                \"id\": 1,\n                \"title\": \"Platform access\"\n            },\n            {\n                \"id\": 2,\n                \"title\": \"Self Service\"\n            },\n            {\n                \"id\": 3,\n                \"title\": \"You can buy add-ons later\"\n            },\n            {\n                \"id\": 4,\n                \"title\": \"Agent available for Q&A\"\n            }\n        ]\n    },\n    {\n        \"id\": 3,\n        \"title\": \"Tier 3\",\n        \"price\": 10000,\n        \"features\": [\n            {\n                \"id\": 5,\n                \"title\": \"You don't need to worry, We'll handle everything\"\n            }\n        ]\n    }\n]"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Payments",
+			"item": [
+				{
+					"name": "[PayPal] Create order",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{Token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"amount\": 10\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/payments/create-paypal-order/",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"payments",
+								"create-paypal-order",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "[PayPal] Capture order",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{Token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"orderID\": \"7YX325843H504630A\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/payments/capture-paypal-order/",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"payments",
+								"capture-paypal-order",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "[Stripe] Make payment",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{Token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\n    \"amount\": 39000,\n\n    \"identifier\": \"tok_1NTgwyAQmMARcTITfc57dHfU\",\n\n    \"identifierType\": \"stripeToken\",\n\n    \"purpose\": \"tier_purchase\",\n\n    \"tierId\": 1\n\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/payments/make-stripe-payment/",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"payments",
+								"make-stripe-payment",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "[Stripe] Make payment",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjg5NzUwNzI1LCJpYXQiOjE2ODkzMTg3MjUsImp0aSI6IjA2ZThkY2Q3YmFlOTRkODk5OTdlOWYxOWNiZmMxZDAzIiwidXNlcl9pZCI6MTA1fQ.BrcIHll4P_O6t3KjXnFDXd8BS5HHxt1Xhrg_m-i_JAg",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\n    \"amount\": 39000,\n\n    \"identifier\": \"tok_1NTgwyAQmMARcTITfc57dHfU\",\n\n    \"identifierType\": \"stripeToken\",\n\n    \"purpose\": \"tier_purchase\",\n\n    \"tierId\": 1\n\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL}}/api/payments/make-stripe-payment/",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"api",
+										"payments",
+										"make-stripe-payment",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Fri, 14 Jul 2023 08:03:09 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.11.3"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, origin"
+								},
+								{
+									"key": "Allow",
+									"value": "OPTIONS, POST"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1147"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"payment_intent\": {\n        \"id\": \"pi_3NTgy0AQmMARcTIT0itppfSO\",\n        \"object\": \"payment_intent\",\n        \"amount\": 39000,\n        \"amount_capturable\": 0,\n        \"amount_details\": {\n            \"tip\": {}\n        },\n        \"amount_received\": 39000,\n        \"application\": null,\n        \"application_fee_amount\": null,\n        \"automatic_payment_methods\": null,\n        \"canceled_at\": null,\n        \"cancellation_reason\": null,\n        \"capture_method\": \"automatic\",\n        \"client_secret\": \"pi_3NTgy0AQmMARcTIT0itppfSO_secret_8pJEFDI0CD407Pdt7aEIOAfqa\",\n        \"confirmation_method\": \"automatic\",\n        \"created\": 1689321788,\n        \"currency\": \"usd\",\n        \"customer\": \"cus_OFbMTqcfNNypXv\",\n        \"description\": null,\n        \"invoice\": null,\n        \"last_payment_error\": null,\n        \"latest_charge\": \"ch_3NTgy0AQmMARcTIT0hFMXnjw\",\n        \"livemode\": false,\n        \"metadata\": {},\n        \"next_action\": null,\n        \"on_behalf_of\": null,\n        \"payment_method\": \"pm_1NTgy0AQmMARcTITtJQZP69W\",\n        \"payment_method_options\": {\n            \"card\": {\n                \"installments\": null,\n                \"mandate_options\": null,\n                \"network\": null,\n                \"request_three_d_secure\": \"automatic\"\n            }\n        },\n        \"payment_method_types\": [\n            \"card\"\n        ],\n        \"processing\": null,\n        \"receipt_email\": null,\n        \"review\": null,\n        \"setup_future_usage\": null,\n        \"shipping\": null,\n        \"source\": null,\n        \"statement_descriptor\": null,\n        \"statement_descriptor_suffix\": null,\n        \"status\": \"succeeded\",\n        \"transfer_data\": null,\n        \"transfer_group\": null\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "[Stripe] Store card details",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{Token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"stripeToken\": \"tok_123456789\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/payments/store-card-details/",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"payments",
+								"store-card-details",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "[Stripe] Get Customer Cards",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{Token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{URL}}/api/payments/get-customer-cards/",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"payments",
+								"get-customer-cards",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "[Stripe] Get Customer Cards",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjg5NjEwOTIwLCJpYXQiOjE2ODkxNzg5MjAsImp0aSI6IjIxNjZiN2I2MjlhOTRmYjg4NTQyZmEwMDhmMWE4YTE3IiwidXNlcl9pZCI6OTl9.0y-yBkMLM6Jajlh677xFlfUs8Pu359yrjATVc0mCG6c",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{URL}}/api/payments/get-customer-cards/",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"api",
+										"payments",
+										"get-customer-cards",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Wed, 12 Jul 2023 17:14:16 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.11.3"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, origin"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "139"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": \"card_1NT6EkAQmMARcTITx4s7q8bh\",\n        \"brand\": \"visa\",\n        \"last4\": \"4242\"\n    },\n    {\n        \"id\": \"card_1NT5mxAQmMARcTITu9Ot4vRO\",\n        \"brand\": \"visa\",\n        \"last4\": \"4242\"\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "[Stripe] Remove card",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{Token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{URL}}/api/payments/remove-card/card_1NT5mxAQmMARcTITu9Ot4vRO",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"payments",
+								"remove-card",
+								"card_1NT5mxAQmMARcTITu9Ot4vRO"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Share Drive",
+			"item": [
+				{
+					"name": "Upload file",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{Token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "files",
+									"type": "file",
+									"src": "/Users/a1990/Downloads/MicrosoftTeams-image (7).png"
+								},
+								{
+									"key": "relatedTo",
+									"value": "user",
+									"type": "text"
+								},
+								{
+									"key": "propertyId",
+									"value": "1",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{URL}}/api/drive/upload-file/",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"drive",
+								"upload-file",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Upload file",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{Token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "files",
+											"type": "file",
+											"src": "/Users/a1990/Downloads/WhatsApp Image 2023-07-25 at 8.59.43 PM.jpeg"
+										},
+										{
+											"key": "relatedTo",
+											"value": "user",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{URL}}/api/drive/upload-file/",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"api",
+										"drive",
+										"upload-file",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Thu, 27 Jul 2023 09:19:56 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.11.4"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, origin"
+								},
+								{
+									"key": "Allow",
+									"value": "POST, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "40"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"detail\": \"Files uploaded successfully\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Get files",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{Token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{URL}}/api/drive/get-files/?folderId=4&accessCode=t24vuiGH",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"drive",
+								"get-files",
+								""
+							],
+							"query": [
+								{
+									"key": "trashed",
+									"value": "true",
+									"disabled": true
+								},
+								{
+									"key": "trashed",
+									"value": "false",
+									"disabled": true
+								},
+								{
+									"key": "folderId",
+									"value": "4"
+								},
+								{
+									"key": "accessCode",
+									"value": "t24vuiGH"
+								},
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get files",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{Token}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{URL}}/api/drive/get-files/?folderId=2",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"api",
+										"drive",
+										"get-files",
+										""
+									],
+									"query": [
+										{
+											"key": "folderId",
+											"value": "2"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Thu, 27 Jul 2023 09:37:42 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.11.4"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, origin"
+								},
+								{
+									"key": "Allow",
+									"value": "OPTIONS, GET"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "168"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": 11,\n        \"name\": \"WhatsApp Image 2023-07-25 at 8.59.43 PM.jpeg\",\n        \"extension\": \"jpeg\",\n        \"folder\": 2,\n        \"property\": null,\n        \"uploadedBy\": 2,\n        \"createdAt\": \"2023-07-27T09:19:56.005745Z\"\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Get folders",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{Token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{URL}}/api/drive/get-folders/?relatedTo=user",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"drive",
+								"get-folders",
+								""
+							],
+							"query": [
+								{
+									"key": "relatedTo",
+									"value": "user"
+								},
+								{
+									"key": "trashed",
+									"value": "false",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get folders",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{Token}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{URL}}/api/drive/get-folders/?relatedTo=user",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"api",
+										"drive",
+										"get-folders",
+										""
+									],
+									"query": [
+										{
+											"key": "relatedTo",
+											"value": "user"
+										},
+										{
+											"key": "trashed",
+											"value": "false",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Wed, 02 Aug 2023 21:55:42 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.11.4"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, origin"
+								},
+								{
+									"key": "Allow",
+									"value": "OPTIONS, GET"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "316"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": 5,\n        \"usersWithAccess\": [\n            {\n                \"id\": 2,\n                \"email\": \"mobeenaslam173@gmail.com\",\n                \"firstName\": \"John\",\n                \"lastName\": \"Doe\"\n            },\n            {\n                \"id\": 15,\n                \"email\": \"mobeen@decklaration.com\",\n                \"firstName\": \"\",\n                \"lastName\": \"\"\n            }\n        ],\n        \"name\": \"mobeenaslam173@gmail.com - (2)\",\n        \"relatedTo\": \"user\",\n        \"isTrashed\": false,\n        \"createdAt\": \"2023-08-02T20:38:28.037368Z\",\n        \"createdBy\": 2\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Download file",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{Token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{URL}}/api/drive/download-file/3",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"drive",
+								"download-file",
+								"3"
+							],
+							"query": [
+								{
+									"key": "accessCode",
+									"value": "RgCZ0fCG",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Toggle trash status",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{Token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"objectType\": \"folder\",\n    \"id\": 2\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/drive/toggle-trash/",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"drive",
+								"toggle-trash",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Toggle file trash status",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{Token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"objectType\": \"file\",\n    \"id\": 11\n}\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL}}/api/drive/toggle-trash/",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"api",
+										"drive",
+										"toggle-trash",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Mon, 31 Jul 2023 10:48:57 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.11.4"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, origin"
+								},
+								{
+									"key": "Allow",
+									"value": "POST, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "32"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"detail\": \"File added to trash\"\n}"
+						},
+						{
+							"name": "Toggle folder trash status",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{Token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"objectType\": \"folder\",\n    \"id\": 2\n}\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL}}/api/drive/toggle-trash/",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"api",
+										"drive",
+										"toggle-trash",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Mon, 31 Jul 2023 10:48:20 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.11.4"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, origin"
+								},
+								{
+									"key": "Allow",
+									"value": "POST, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "34"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"detail\": \"Folder added to trash\"\n}"
+						}
+					]
+				},
+				{
+					"name": "grant access",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{Token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"objectType\": \"folder\",\n    \"objectId\": 4,\n    \"email\": \"lavoyoc166@trazeco.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/drive/grant-access/",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"drive",
+								"grant-access",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "grant access",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{Token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"objectType\": \"folder\",\n    \"objectId\": 1,\n    \"email\": \"yawewef795@viperace.com\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL}}/api/drive/grant-access/",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"api",
+										"drive",
+										"grant-access",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Tue, 29 Aug 2023 09:53:39 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.11.4"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, origin"
+								},
+								{
+									"key": "Allow",
+									"value": "OPTIONS, POST"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "40"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"detail\": \"Access granted successfully\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Remove access",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{Token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"objectType\": \"file\",\n    \"objectId\": 5,\n    \"userId\": 18\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/drive/remove-access/",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"drive",
+								"remove-access",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Remove access",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{Token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"objectType\": \"file\",\n    \"objectId\": 5,\n    \"userId\": 18\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL}}/api/drive/remove-access/",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"api",
+										"drive",
+										"remove-access",
+										""
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Tue, 29 Aug 2023 10:19:45 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.11.4"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, origin"
+								},
+								{
+									"key": "Allow",
+									"value": "POST, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "51"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"detail\": \"You don't have rights to remove access\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Add Comment",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{Token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"text\": \"This is a comment\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/drive/comments/?objectType=file&objectId=1",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"drive",
+								"comments",
+								""
+							],
+							"query": [
+								{
+									"key": "objectType",
+									"value": "file"
+								},
+								{
+									"key": "objectId",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Add Comment",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{Token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"text\": \"This is a comment\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL}}/api/drive/comments/?objectType=folder&objectId=1",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"api",
+										"drive",
+										"comments",
+										""
+									],
+									"query": [
+										{
+											"key": "objectType",
+											"value": "folder"
+										},
+										{
+											"key": "objectId",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Tue, 08 Aug 2023 09:43:41 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.11.4"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, origin"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, OPTIONS, POST"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "272"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": {\n        \"detail\": \"Comment added successfully\"\n    },\n    \"data\": {\n        \"id\": 10,\n        \"addedBy\": {\n            \"id\": 2,\n            \"email\": \"mobeenaslam173@gmail.com\",\n            \"firstName\": \"John\",\n            \"lastName\": \"Doe\"\n        },\n        \"objectType\": \"folder\",\n        \"text\": \"This is a comment\",\n        \"createdAt\": \"2023-08-08T09:43:41.656413Z\",\n        \"file\": null,\n        \"folder\": 1\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Get Comments",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{Token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{URL}}/api/drive/comments/?objectType=folder&objectId=1",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"drive",
+								"comments",
+								""
+							],
+							"query": [
+								{
+									"key": "objectType",
+									"value": "folder"
+								},
+								{
+									"key": "objectId",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get Comments",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{Token}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{URL}}/api/drive/comments/?objectType=folder&objectId=1",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"api",
+										"drive",
+										"comments",
+										""
+									],
+									"query": [
+										{
+											"key": "objectType",
+											"value": "folder"
+										},
+										{
+											"key": "objectId",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Tue, 08 Aug 2023 09:44:16 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.11.4"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, origin"
+								},
+								{
+									"key": "Allow",
+									"value": "POST, GET, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "2132"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": 1,\n        \"addedBy\": {\n            \"id\": 2,\n            \"email\": \"mobeenaslam173@gmail.com\",\n            \"firstName\": \"John\",\n            \"lastName\": \"Doe\"\n        },\n        \"objectType\": \"folder\",\n        \"text\": \"This is a comment\",\n        \"createdAt\": \"2023-08-08T08:57:06.019358Z\",\n        \"file\": null,\n        \"folder\": 1\n    },\n    {\n        \"id\": 2,\n        \"addedBy\": {\n            \"id\": 2,\n            \"email\": \"mobeenaslam173@gmail.com\",\n            \"firstName\": \"John\",\n            \"lastName\": \"Doe\"\n        },\n        \"objectType\": \"folder\",\n        \"text\": \"This is a comment\",\n        \"createdAt\": \"2023-08-08T08:58:05.771070Z\",\n        \"file\": null,\n        \"folder\": 1\n    },\n    {\n        \"id\": 3,\n        \"addedBy\": {\n            \"id\": 2,\n            \"email\": \"mobeenaslam173@gmail.com\",\n            \"firstName\": \"John\",\n            \"lastName\": \"Doe\"\n        },\n        \"objectType\": \"folder\",\n        \"text\": \"This is a comment\",\n        \"createdAt\": \"2023-08-08T08:58:37.051885Z\",\n        \"file\": null,\n        \"folder\": 1\n    },\n    {\n        \"id\": 4,\n        \"addedBy\": {\n            \"id\": 2,\n            \"email\": \"mobeenaslam173@gmail.com\",\n            \"firstName\": \"John\",\n            \"lastName\": \"Doe\"\n        },\n        \"objectType\": \"folder\",\n        \"text\": \"This is a comment\",\n        \"createdAt\": \"2023-08-08T08:58:59.880252Z\",\n        \"file\": null,\n        \"folder\": 1\n    },\n    {\n        \"id\": 5,\n        \"addedBy\": {\n            \"id\": 2,\n            \"email\": \"mobeenaslam173@gmail.com\",\n            \"firstName\": \"John\",\n            \"lastName\": \"Doe\"\n        },\n        \"objectType\": \"folder\",\n        \"text\": \"This is a comment\",\n        \"createdAt\": \"2023-08-08T08:59:17.040004Z\",\n        \"file\": null,\n        \"folder\": 1\n    },\n    {\n        \"id\": 6,\n        \"addedBy\": {\n            \"id\": 2,\n            \"email\": \"mobeenaslam173@gmail.com\",\n            \"firstName\": \"John\",\n            \"lastName\": \"Doe\"\n        },\n        \"objectType\": \"folder\",\n        \"text\": \"This is a comment\",\n        \"createdAt\": \"2023-08-08T08:59:26.080329Z\",\n        \"file\": null,\n        \"folder\": 1\n    },\n    {\n        \"id\": 7,\n        \"addedBy\": {\n            \"id\": 2,\n            \"email\": \"mobeenaslam173@gmail.com\",\n            \"firstName\": \"John\",\n            \"lastName\": \"Doe\"\n        },\n        \"objectType\": \"folder\",\n        \"text\": \"This is a comment\",\n        \"createdAt\": \"2023-08-08T09:05:04.383550Z\",\n        \"file\": null,\n        \"folder\": 1\n    },\n    {\n        \"id\": 8,\n        \"addedBy\": {\n            \"id\": 2,\n            \"email\": \"mobeenaslam173@gmail.com\",\n            \"firstName\": \"John\",\n            \"lastName\": \"Doe\"\n        },\n        \"objectType\": \"folder\",\n        \"text\": \"This is a comment\",\n        \"createdAt\": \"2023-08-08T09:35:41.796999Z\",\n        \"file\": null,\n        \"folder\": 1\n    },\n    {\n        \"id\": 9,\n        \"addedBy\": {\n            \"id\": 2,\n            \"email\": \"mobeenaslam173@gmail.com\",\n            \"firstName\": \"John\",\n            \"lastName\": \"Doe\"\n        },\n        \"objectType\": \"folder\",\n        \"text\": \"This is a comment\",\n        \"createdAt\": \"2023-08-08T09:36:12.321563Z\",\n        \"file\": null,\n        \"folder\": 1\n    },\n    {\n        \"id\": 10,\n        \"addedBy\": {\n            \"id\": 2,\n            \"email\": \"mobeenaslam173@gmail.com\",\n            \"firstName\": \"John\",\n            \"lastName\": \"Doe\"\n        },\n        \"objectType\": \"folder\",\n        \"text\": \"This is a comment\",\n        \"createdAt\": \"2023-08-08T09:43:41.656413Z\",\n        \"file\": null,\n        \"folder\": 1\n    }\n]"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Properties",
+			"item": [
+				{
+					"name": "Create property",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{Token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"Luxurious Condo\",\n    \"area\": 1200.5,\n    \"price\": 500000.00,\n    \"propertyType\": \"condo\",\n    \"street\": \"123 Main St\",\n    \"city\": \"New York\",\n    \"state\": \"NY\",\n    \"unitNumber\": \"A102\",\n    \"amenities\": \"Elevator, Gym, Pool\",\n    \"monthlyCommonCharges\": 300.00,\n    \"numberOfBedrooms\": 2,\n    \"numberOfBathrooms\": 2,\n    \"squareFootage\": 1500,\n    \"washerDryer\": true,\n    \"balconyTerraceGarden\": true,\n    \"description\": \"Spacious and modern condo in a prime location.\",\n    \"purpose\": \"sale\",\n    \"isActive\": true,\n    \"exposure\": \"South\",\n    \"potentialRentalIncome\": 2000.00,\n    \"potentialReturnFromRent\": 5.0\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/properties/create/",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"properties",
+								"create",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Create property [condo]",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{Token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"title\": \"Luxurious Condo\",\n    \"area\": 1200.5,\n    \"price\": 500000.00,\n    \"propertyType\": \"condo\",\n    \"street\": \"123 Main St\",\n    \"city\": \"New York\",\n    \"state\": \"NY\",\n    \"unitNumber\": \"A102\",\n    \"amenities\": \"Elevator, Gym, Pool\",\n    \"monthlyCommonCharges\": 300.00,\n    \"numberOfBedrooms\": 2,\n    \"numberOfBathrooms\": 2,\n    \"squareFootage\": 1500,\n    \"washerDryer\": true,\n    \"balconyTerraceGarden\": true,\n    \"description\": \"Spacious and modern condo in a prime location.\",\n    \"purpose\": \"sale\",\n    \"isActive\": true,\n    \"exposure\": \"South\",\n    \"potentialRentalIncome\": 2000.00,\n    \"potentialReturnFromRent\": 5.0\n}\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL}}/api/properties/create/",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"api",
+										"properties",
+										"create",
+										""
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Wed, 16 Aug 2023 09:32:01 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.11.4"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, origin"
+								},
+								{
+									"key": "Allow",
+									"value": "POST, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "887"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": {\n        \"detail\": \"Property created successfully\"\n    },\n    \"data\": {\n        \"id\": 4,\n        \"title\": \"Luxurious Condo\",\n        \"area\": 1200.5,\n        \"price\": 500000,\n        \"propertyType\": \"condo\",\n        \"street\": \"123 Main St\",\n        \"city\": \"New York\",\n        \"state\": \"NY\",\n        \"unitNumber\": \"A102\",\n        \"amenities\": \"Elevator, Gym, Pool\",\n        \"monthlyCommonCharges\": \"300.00\",\n        \"monthlyRealEstateTaxes\": null,\n        \"numberOfBedrooms\": 2,\n        \"numberOfBathrooms\": 2,\n        \"squareFootage\": 1500,\n        \"washerDryer\": true,\n        \"balconyTerraceGarden\": true,\n        \"description\": \"Spacious and modern condo in a prime location.\",\n        \"purpose\": \"sale\",\n        \"isActive\": true,\n        \"buildingName\": null,\n        \"boardApprovalRequired\": null,\n        \"sublettingAllowed\": null,\n        \"monthlyMaintenanceFee\": null,\n        \"financingAllowedPercentage\": null,\n        \"exposure\": \"South\",\n        \"potentialRentalIncome\": \"2000.00\",\n        \"potentialReturnFromRent\": \"5.00\",\n        \"insurance\": null,\n        \"lotSize\": null,\n        \"buildingWidth\": null,\n        \"numberOfFloors\": null,\n        \"rented\": null,\n        \"rentalIncome\": null,\n        \"yearBuilt\": null,\n        \"seller\": 2\n    }\n}"
+						},
+						{
+							"name": "Create property [co-op]",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{Token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"title\": \"Cozy Co-op\",\n    \"seller\": 1,\n    \"area\": 800.75,\n    \"price\": 300000.00,\n    \"propertyType\": \"co-op\",\n    \"street\": \"456 Elm St\",\n    \"city\": \"Los Angeles\",\n    \"state\": \"CA\",\n    \"unitNumber\": \"B202\",\n    \"amenities\": \"Doorman, Laundry\",\n    \"monthlyCommonCharges\": 250.00,\n    \"numberOfBedrooms\": 1,\n    \"numberOfBathrooms\": 1,\n    \"squareFootage\": 1000,\n    \"washerDryer\": false,\n    \"balconyTerraceGarden\": false,\n    \"description\": \"Charming co-op with great amenities.\",\n    \"purpose\": \"rent\",\n    \"isActive\": true,\n    \"buildingName\": \"Elm Towers\",\n    \"boardApprovalRequired\": true,\n    \"sublettingAllowed\": false,\n    \"monthlyMaintenanceFee\": 350.00,\n    \"financingAllowedPercentage\": 80.0\n}\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL}}/api/properties/create/",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"api",
+										"properties",
+										"create",
+										""
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Wed, 16 Aug 2023 09:34:26 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.11.4"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, origin"
+								},
+								{
+									"key": "Allow",
+									"value": "POST, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "879"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": {\n        \"detail\": \"Property created successfully\"\n    },\n    \"data\": {\n        \"id\": 5,\n        \"title\": \"Cozy Co-op\",\n        \"area\": 800.75,\n        \"price\": 300000,\n        \"propertyType\": \"co-op\",\n        \"street\": \"456 Elm St\",\n        \"city\": \"Los Angeles\",\n        \"state\": \"CA\",\n        \"unitNumber\": \"B202\",\n        \"amenities\": \"Doorman, Laundry\",\n        \"monthlyCommonCharges\": \"250.00\",\n        \"monthlyRealEstateTaxes\": null,\n        \"numberOfBedrooms\": 1,\n        \"numberOfBathrooms\": 1,\n        \"squareFootage\": 1000,\n        \"washerDryer\": false,\n        \"balconyTerraceGarden\": false,\n        \"description\": \"Charming co-op with great amenities.\",\n        \"purpose\": \"rent\",\n        \"isActive\": true,\n        \"buildingName\": \"Elm Towers\",\n        \"boardApprovalRequired\": true,\n        \"sublettingAllowed\": false,\n        \"monthlyMaintenanceFee\": \"350.00\",\n        \"financingAllowedPercentage\": \"80.00\",\n        \"exposure\": null,\n        \"potentialRentalIncome\": null,\n        \"potentialReturnFromRent\": null,\n        \"insurance\": null,\n        \"lotSize\": null,\n        \"buildingWidth\": null,\n        \"numberOfFloors\": null,\n        \"rented\": null,\n        \"rentalIncome\": null,\n        \"yearBuilt\": null,\n        \"seller\": 2\n    }\n}"
+						},
+						{
+							"name": "Create property [townhouse]",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{Token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"title\": \"Spacious Townhouse\",\n    \"seller\": 1,\n    \"area\": 1800.0,\n    \"price\": 700000.00,\n    \"propertyType\": \"townhouse\",\n    \"street\": \"789 Oak Ave\",\n    \"city\": \"Chicago\",\n    \"state\": \"IL\",\n    \"unitNumber\": \"\",\n    \"amenities\": \"Balcony, Garden\",\n    \"monthlyCommonCharges\": null,\n    \"numberOfBedrooms\": 3,\n    \"numberOfBathrooms\": 2,\n    \"squareFootage\": 2000,\n    \"washerDryer\": true,\n    \"balconyTerraceGarden\": true,\n    \"description\": \"Spacious townhouse with beautiful garden.\",\n    \"purpose\": \"sale\",\n    \"isActive\": true,\n    \"insurance\": 500.00,\n    \"lotSize\": 3000,\n    \"buildingWidth\": 20,\n    \"numberOfFloors\": 2,\n    \"rented\": false,\n    \"rentalIncome\": null,\n    \"yearBuilt\": 2005\n}\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL}}/api/properties/create/",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"api",
+										"properties",
+										"create",
+										""
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Wed, 16 Aug 2023 09:34:54 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.11.4"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, origin"
+								},
+								{
+									"key": "Allow",
+									"value": "POST, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "866"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": {\n        \"detail\": \"Property created successfully\"\n    },\n    \"data\": {\n        \"id\": 6,\n        \"title\": \"Spacious Townhouse\",\n        \"area\": 1800,\n        \"price\": 700000,\n        \"propertyType\": \"townhouse\",\n        \"street\": \"789 Oak Ave\",\n        \"city\": \"Chicago\",\n        \"state\": \"IL\",\n        \"unitNumber\": \"\",\n        \"amenities\": \"Balcony, Garden\",\n        \"monthlyCommonCharges\": null,\n        \"monthlyRealEstateTaxes\": null,\n        \"numberOfBedrooms\": 3,\n        \"numberOfBathrooms\": 2,\n        \"squareFootage\": 2000,\n        \"washerDryer\": true,\n        \"balconyTerraceGarden\": true,\n        \"description\": \"Spacious townhouse with beautiful garden.\",\n        \"purpose\": \"sale\",\n        \"isActive\": true,\n        \"buildingName\": null,\n        \"boardApprovalRequired\": null,\n        \"sublettingAllowed\": null,\n        \"monthlyMaintenanceFee\": null,\n        \"financingAllowedPercentage\": null,\n        \"exposure\": null,\n        \"potentialRentalIncome\": null,\n        \"potentialReturnFromRent\": null,\n        \"insurance\": \"500.00\",\n        \"lotSize\": 3000,\n        \"buildingWidth\": 20,\n        \"numberOfFloors\": 2,\n        \"rented\": false,\n        \"rentalIncome\": null,\n        \"yearBuilt\": 2005,\n        \"seller\": 2\n    }\n}"
+						},
+						{
+							"name": "Create property [multifamily]",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{Token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"title\": \"Investment Multifamily\",\n    \"seller\": 1,\n    \"area\": 2500.0,\n    \"price\": 900000.00,\n    \"propertyType\": \"multifamily\",\n    \"street\": \"101 Maple St\",\n    \"city\": \"Miami\",\n    \"state\": \"FL\",\n    \"unitNumber\": \"\",\n    \"amenities\": \"Laundry\",\n    \"monthlyCommonCharges\": null,\n    \"numberOfBedrooms\": 5,\n    \"numberOfBathrooms\": 4,\n    \"squareFootage\": 3000,\n    \"washerDryer\": true,\n    \"balconyTerraceGarden\": false,\n    \"description\": \"Multifamily property for investment.\",\n    \"purpose\": \"sale\",\n    \"isActive\": true,\n    \"numberOfUnits\": 2\n}\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL}}/api/properties/create/",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"api",
+										"properties",
+										"create",
+										""
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Wed, 16 Aug 2023 09:40:02 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.11.4"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, origin"
+								},
+								{
+									"key": "Allow",
+									"value": "OPTIONS, POST"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "955"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": {\n        \"detail\": \"Property created successfully\"\n    },\n    \"data\": {\n        \"id\": 8,\n        \"seller\": {\n            \"id\": 2,\n            \"email\": \"mobeenaslam173@gmail.com\",\n            \"firstName\": \"John\",\n            \"lastName\": \"Doe\"\n        },\n        \"title\": \"Investment Multifamily\",\n        \"area\": 2500,\n        \"price\": 900000,\n        \"propertyType\": \"multifamily\",\n        \"street\": \"101 Maple St\",\n        \"city\": \"Miami\",\n        \"state\": \"FL\",\n        \"unitNumber\": \"\",\n        \"amenities\": \"Laundry\",\n        \"monthlyCommonCharges\": null,\n        \"monthlyRealEstateTaxes\": null,\n        \"numberOfBedrooms\": 5,\n        \"numberOfBathrooms\": 4,\n        \"squareFootage\": 3000,\n        \"washerDryer\": true,\n        \"balconyTerraceGarden\": false,\n        \"description\": \"Multifamily property for investment.\",\n        \"purpose\": \"sale\",\n        \"isActive\": true,\n        \"buildingName\": null,\n        \"boardApprovalRequired\": null,\n        \"sublettingAllowed\": null,\n        \"monthlyMaintenanceFee\": null,\n        \"financingAllowedPercentage\": null,\n        \"exposure\": null,\n        \"potentialRentalIncome\": null,\n        \"potentialReturnFromRent\": null,\n        \"insurance\": null,\n        \"lotSize\": null,\n        \"buildingWidth\": null,\n        \"numberOfFloors\": null,\n        \"rented\": null,\n        \"rentalIncome\": null,\n        \"yearBuilt\": null,\n        \"numberOfUnits\": 2\n    }\n}"
+						},
+						{
+							"name": "Create property",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{Token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"title\": \"Luxurious Condo\",\n    \"area\": 1200.5,\n    \"price\": 500000.00,\n    \"propertyType\": \"condo\",\n    \"street\": \"123 Main St\",\n    \"city\": \"New York\",\n    \"state\": \"NY\",\n    \"unitNumber\": \"A102\",\n    \"amenities\": \"Elevator, Gym, Pool\",\n    \"monthlyCommonCharges\": 300.00,\n    \"numberOfBedrooms\": 2,\n    \"numberOfBathrooms\": 2,\n    \"squareFootage\": 1500,\n    \"washerDryer\": true,\n    \"balconyTerraceGarden\": true,\n    \"description\": \"Spacious and modern condo in a prime location.\",\n    \"purpose\": \"sale\",\n    \"isActive\": true,\n    \"exposure\": \"South\",\n    \"potentialRentalIncome\": 2000.00,\n    \"potentialReturnFromRent\": 5.0\n}\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL}}/api/properties/create/",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"api",
+										"properties",
+										"create",
+										""
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Wed, 16 Aug 2023 09:41:00 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.11.4"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, origin"
+								},
+								{
+									"key": "Allow",
+									"value": "OPTIONS, POST"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "986"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": {\n        \"detail\": \"Property created successfully\"\n    },\n    \"data\": {\n        \"id\": 9,\n        \"seller\": {\n            \"id\": 2,\n            \"email\": \"mobeenaslam173@gmail.com\",\n            \"firstName\": \"John\",\n            \"lastName\": \"Doe\"\n        },\n        \"title\": \"Luxurious Condo\",\n        \"area\": 1200.5,\n        \"price\": 500000,\n        \"propertyType\": \"condo\",\n        \"street\": \"123 Main St\",\n        \"city\": \"New York\",\n        \"state\": \"NY\",\n        \"unitNumber\": \"A102\",\n        \"amenities\": \"Elevator, Gym, Pool\",\n        \"monthlyCommonCharges\": \"300.00\",\n        \"monthlyRealEstateTaxes\": null,\n        \"numberOfBedrooms\": 2,\n        \"numberOfBathrooms\": 2,\n        \"squareFootage\": 1500,\n        \"washerDryer\": true,\n        \"balconyTerraceGarden\": true,\n        \"description\": \"Spacious and modern condo in a prime location.\",\n        \"purpose\": \"sale\",\n        \"isActive\": true,\n        \"buildingName\": null,\n        \"boardApprovalRequired\": null,\n        \"sublettingAllowed\": null,\n        \"monthlyMaintenanceFee\": null,\n        \"financingAllowedPercentage\": null,\n        \"exposure\": \"South\",\n        \"potentialRentalIncome\": \"2000.00\",\n        \"potentialReturnFromRent\": \"5.00\",\n        \"insurance\": null,\n        \"lotSize\": null,\n        \"buildingWidth\": null,\n        \"numberOfFloors\": null,\n        \"rented\": null,\n        \"rentalIncome\": null,\n        \"yearBuilt\": null,\n        \"numberOfUnits\": null\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Update property",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{Token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"Luxurious Condo\",\n    \"area\": 1210.5,\n    \"price\": 500000.00,\n    \"propertyType\": \"condo\",\n    \"street\": \"123 Main St\",\n    \"city\": \"New York\",\n    \"state\": \"NY\",\n    \"unitNumber\": \"A102\",\n    \"amenities\": \"Elevator, Gym, Pool, TV Lounge\",\n    \"monthlyCommonCharges\": 300.00,\n    \"numberOfBedrooms\": 2,\n    \"numberOfBathrooms\": 2,\n    \"squareFootage\": 1500,\n    \"washerDryer\": true,\n    \"balconyTerraceGarden\": true,\n    \"description\": \"Spacious and modern condo in a prime location.\",\n    \"purpose\": \"sale\",\n    \"isActive\": true,\n    \"exposure\": \"South\",\n    \"potentialRentalIncome\": 2000.00,\n    \"potentialReturnFromRent\": 5.0\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/properties/update/10",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"properties",
+								"update",
+								"10"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Update property",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{Token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"title\": \"Luxurious Condo\",\n    \"area\": 1210.5,\n    \"price\": 500000.00,\n    \"propertyType\": \"condo\",\n    \"street\": \"123 Main St\",\n    \"city\": \"New York\",\n    \"state\": \"NY\",\n    \"unitNumber\": \"A102\",\n    \"amenities\": \"Elevator, Gym, Pool, TV Lounge\",\n    \"monthlyCommonCharges\": 300.00,\n    \"numberOfBedrooms\": 2,\n    \"numberOfBathrooms\": 2,\n    \"squareFootage\": 1500,\n    \"washerDryer\": true,\n    \"balconyTerraceGarden\": true,\n    \"description\": \"Spacious and modern condo in a prime location.\",\n    \"purpose\": \"sale\",\n    \"isActive\": true,\n    \"exposure\": \"South\",\n    \"potentialRentalIncome\": 2000.00,\n    \"potentialReturnFromRent\": 5.0\n}\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL}}/api/properties/update/10",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"api",
+										"properties",
+										"update",
+										"10"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Mon, 28 Aug 2023 14:47:25 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.11.4"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, origin"
+								},
+								{
+									"key": "Allow",
+									"value": "PATCH, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "994"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": {\n        \"detail\": \"Property updated successfully\"\n    },\n    \"data\": {\n        \"id\": 10,\n        \"seller\": {\n            \"id\": 2,\n            \"email\": \"mobeenaslam173@gmail.com\",\n            \"firstName\": \"John\",\n            \"lastName\": \"Doe\"\n        },\n        \"title\": \"Luxurious Condo\",\n        \"area\": 1210.5,\n        \"price\": 500000,\n        \"propertyType\": \"condo\",\n        \"street\": \"123 Main St\",\n        \"city\": \"New York\",\n        \"state\": \"NY\",\n        \"unitNumber\": \"A102\",\n        \"amenities\": \"Elevator, Gym, Pool, TV Lounge\",\n        \"monthlyCommonCharges\": null,\n        \"monthlyRealEstateTaxes\": null,\n        \"numberOfBedrooms\": 2,\n        \"numberOfBathrooms\": 2,\n        \"squareFootage\": 1500,\n        \"washerDryer\": true,\n        \"balconyTerraceGarden\": true,\n        \"description\": \"Spacious and modern condo in a prime location.\",\n        \"purpose\": \"sale\",\n        \"isActive\": true,\n        \"buildingName\": null,\n        \"boardApprovalRequired\": null,\n        \"sublettingAllowed\": null,\n        \"monthlyMaintenanceFee\": null,\n        \"financingAllowedPercentage\": null,\n        \"exposure\": \"South\",\n        \"potentialRentalIncome\": \"2000.00\",\n        \"potentialReturnFromRent\": \"5.00\",\n        \"insurance\": null,\n        \"lotSize\": null,\n        \"buildingWidth\": null,\n        \"numberOfFloors\": null,\n        \"rented\": null,\n        \"rentalIncome\": null,\n        \"yearBuilt\": null,\n        \"numberOfUnits\": null\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Get properties",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{Token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{URL}}/api/properties/?selletId=2&propertyType=condo",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"properties",
+								""
+							],
+							"query": [
+								{
+									"key": "selletId",
+									"value": "2"
+								},
+								{
+									"key": "propertyType",
+									"value": "condo"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "New Request",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{Token}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{URL}}/api/properties/?selletId=2&propertyType=condo",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"api",
+										"properties",
+										""
+									],
+									"query": [
+										{
+											"key": "selletId",
+											"value": "2"
+										},
+										{
+											"key": "propertyType",
+											"value": "condo"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Wed, 16 Aug 2023 10:02:41 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.11.4"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, origin"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "3701"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": 2,\n        \"seller\": {\n            \"id\": 2,\n            \"email\": \"mobeenaslam173@gmail.com\",\n            \"firstName\": \"John\",\n            \"lastName\": \"Doe\"\n        },\n        \"title\": \"Luxurious Condo\",\n        \"area\": 1200.5,\n        \"price\": 500000,\n        \"propertyType\": \"condo\",\n        \"street\": \"123 Main St\",\n        \"city\": \"New York\",\n        \"state\": \"NY\",\n        \"unitNumber\": \"A102\",\n        \"amenities\": \"Elevator, Gym, Pool\",\n        \"monthlyCommonCharges\": \"300.00\",\n        \"monthlyRealEstateTaxes\": null,\n        \"numberOfBedrooms\": 2,\n        \"numberOfBathrooms\": 2,\n        \"squareFootage\": 1500,\n        \"washerDryer\": true,\n        \"balconyTerraceGarden\": true,\n        \"description\": \"Spacious and modern condo in a prime location.\",\n        \"purpose\": \"sale\",\n        \"isActive\": true,\n        \"buildingName\": null,\n        \"boardApprovalRequired\": null,\n        \"sublettingAllowed\": null,\n        \"monthlyMaintenanceFee\": null,\n        \"financingAllowedPercentage\": null,\n        \"exposure\": \"South\",\n        \"potentialRentalIncome\": \"2000.00\",\n        \"potentialReturnFromRent\": \"5.00\",\n        \"insurance\": null,\n        \"lotSize\": null,\n        \"buildingWidth\": null,\n        \"numberOfFloors\": null,\n        \"rented\": null,\n        \"rentalIncome\": null,\n        \"yearBuilt\": null,\n        \"numberOfUnits\": null\n    },\n    {\n        \"id\": 3,\n        \"seller\": {\n            \"id\": 2,\n            \"email\": \"mobeenaslam173@gmail.com\",\n            \"firstName\": \"John\",\n            \"lastName\": \"Doe\"\n        },\n        \"title\": \"Luxurious Condo\",\n        \"area\": 1200.5,\n        \"price\": 500000,\n        \"propertyType\": \"condo\",\n        \"street\": \"123 Main St\",\n        \"city\": \"New York\",\n        \"state\": \"NY\",\n        \"unitNumber\": \"A102\",\n        \"amenities\": \"Elevator, Gym, Pool\",\n        \"monthlyCommonCharges\": \"300.00\",\n        \"monthlyRealEstateTaxes\": null,\n        \"numberOfBedrooms\": 2,\n        \"numberOfBathrooms\": 2,\n        \"squareFootage\": 1500,\n        \"washerDryer\": true,\n        \"balconyTerraceGarden\": true,\n        \"description\": \"Spacious and modern condo in a prime location.\",\n        \"purpose\": \"sale\",\n        \"isActive\": true,\n        \"buildingName\": null,\n        \"boardApprovalRequired\": null,\n        \"sublettingAllowed\": null,\n        \"monthlyMaintenanceFee\": null,\n        \"financingAllowedPercentage\": null,\n        \"exposure\": \"South\",\n        \"potentialRentalIncome\": \"2000.00\",\n        \"potentialReturnFromRent\": \"5.00\",\n        \"insurance\": null,\n        \"lotSize\": null,\n        \"buildingWidth\": null,\n        \"numberOfFloors\": null,\n        \"rented\": null,\n        \"rentalIncome\": null,\n        \"yearBuilt\": null,\n        \"numberOfUnits\": null\n    },\n    {\n        \"id\": 4,\n        \"seller\": {\n            \"id\": 2,\n            \"email\": \"mobeenaslam173@gmail.com\",\n            \"firstName\": \"John\",\n            \"lastName\": \"Doe\"\n        },\n        \"title\": \"Luxurious Condo\",\n        \"area\": 1200.5,\n        \"price\": 500000,\n        \"propertyType\": \"condo\",\n        \"street\": \"123 Main St\",\n        \"city\": \"New York\",\n        \"state\": \"NY\",\n        \"unitNumber\": \"A102\",\n        \"amenities\": \"Elevator, Gym, Pool\",\n        \"monthlyCommonCharges\": \"300.00\",\n        \"monthlyRealEstateTaxes\": null,\n        \"numberOfBedrooms\": 2,\n        \"numberOfBathrooms\": 2,\n        \"squareFootage\": 1500,\n        \"washerDryer\": true,\n        \"balconyTerraceGarden\": true,\n        \"description\": \"Spacious and modern condo in a prime location.\",\n        \"purpose\": \"sale\",\n        \"isActive\": true,\n        \"buildingName\": null,\n        \"boardApprovalRequired\": null,\n        \"sublettingAllowed\": null,\n        \"monthlyMaintenanceFee\": null,\n        \"financingAllowedPercentage\": null,\n        \"exposure\": \"South\",\n        \"potentialRentalIncome\": \"2000.00\",\n        \"potentialReturnFromRent\": \"5.00\",\n        \"insurance\": null,\n        \"lotSize\": null,\n        \"buildingWidth\": null,\n        \"numberOfFloors\": null,\n        \"rented\": null,\n        \"rentalIncome\": null,\n        \"yearBuilt\": null,\n        \"numberOfUnits\": null\n    },\n    {\n        \"id\": 9,\n        \"seller\": {\n            \"id\": 2,\n            \"email\": \"mobeenaslam173@gmail.com\",\n            \"firstName\": \"John\",\n            \"lastName\": \"Doe\"\n        },\n        \"title\": \"Luxurious Condo\",\n        \"area\": 1200.5,\n        \"price\": 500000,\n        \"propertyType\": \"condo\",\n        \"street\": \"123 Main St\",\n        \"city\": \"New York\",\n        \"state\": \"NY\",\n        \"unitNumber\": \"A102\",\n        \"amenities\": \"Elevator, Gym, Pool\",\n        \"monthlyCommonCharges\": \"300.00\",\n        \"monthlyRealEstateTaxes\": null,\n        \"numberOfBedrooms\": 2,\n        \"numberOfBathrooms\": 2,\n        \"squareFootage\": 1500,\n        \"washerDryer\": true,\n        \"balconyTerraceGarden\": true,\n        \"description\": \"Spacious and modern condo in a prime location.\",\n        \"purpose\": \"sale\",\n        \"isActive\": true,\n        \"buildingName\": null,\n        \"boardApprovalRequired\": null,\n        \"sublettingAllowed\": null,\n        \"monthlyMaintenanceFee\": null,\n        \"financingAllowedPercentage\": null,\n        \"exposure\": \"South\",\n        \"potentialRentalIncome\": \"2000.00\",\n        \"potentialReturnFromRent\": \"5.00\",\n        \"insurance\": null,\n        \"lotSize\": null,\n        \"buildingWidth\": null,\n        \"numberOfFloors\": null,\n        \"rented\": null,\n        \"rentalIncome\": null,\n        \"yearBuilt\": null,\n        \"numberOfUnits\": null\n    }\n]"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Get users",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{Token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{URL}}/api/users/?category=attorney",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"users",
+								""
+							],
+							"query": [
+								{
+									"key": "category",
+									"value": "all",
+									"disabled": true
+								},
+								{
+									"key": "category",
+									"value": "attorney"
+								},
+								{
+									"key": "category",
+									"value": "seller",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get users",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{Token}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{URL}}/api/users/?category=attorney",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"api",
+										"users",
+										""
+									],
+									"query": [
+										{
+											"key": "category",
+											"value": "all",
+											"disabled": true
+										},
+										{
+											"key": "category",
+											"value": "attorney"
+										},
+										{
+											"key": "category",
+											"value": "seller",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Tue, 05 Sep 2023 08:47:11 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.11.5"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, origin"
+								},
+								{
+									"key": "Allow",
+									"value": "OPTIONS, GET"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "311"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": 18,\n        \"username\": \"lavoyoc166@trazeco.com\",\n        \"email\": \"lavoyoc166@trazeco.com\",\n        \"firstName\": \"\",\n        \"lastName\": \"\",\n        \"isEmailVerified\": false,\n        \"phoneNo\": null,\n        \"dob\": null,\n        \"gender\": null,\n        \"description\": \"\",\n        \"address\": null,\n        \"city\": null,\n        \"country\": null,\n        \"isSeller\": false,\n        \"isAttorney\": true,\n        \"isActive\": true,\n        \"isAdmin\": false,\n        \"tier\": null\n    }\n]"
+						}
+					]
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "URL",
+			"value": "http://127.0.0.1:8000",
+			"type": "string"
+		},
+		{
+			"key": "Token",
+			"value": ""
+		},
+		{
+			"key": "URL",
+			"value": "https://ezra-home-backend.decklaration.com",
+			"type": "string",
+			"disabled": true
+		}
+	]
+}
