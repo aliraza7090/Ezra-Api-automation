@@ -63,12 +63,9 @@
 							}
 						},
 						"url": {
-							"raw": "https://ezra-home-backend.decklaration.com/api/auth/login/",
-							"protocol": "https",
+							"raw": "{{URL}}/api/auth/login/",
 							"host": [
-								"ezra-home-backend",
-								"decklaration",
-								"com"
+								"{{URL}}"
 							],
 							"path": [
 								"api",
@@ -217,12 +214,9 @@
 							}
 						},
 						"url": {
-							"raw": "https://ezra-home-backend.decklaration.com/api/auth/login/",
-							"protocol": "https",
+							"raw": "{{URL}}/api/auth/login/",
 							"host": [
-								"ezra-home-backend",
-								"decklaration",
-								"com"
+								"{{URL}}"
 							],
 							"path": [
 								"api",
@@ -371,12 +365,9 @@
 							}
 						},
 						"url": {
-							"raw": "https://ezra-home-backend.decklaration.com/api/auth/login/",
-							"protocol": "https",
+							"raw": "{{URL}}/api/auth/login/",
 							"host": [
-								"ezra-home-backend",
-								"decklaration",
-								"com"
+								"{{URL}}"
 							],
 							"path": [
 								"api",
@@ -525,12 +516,9 @@
 							}
 						},
 						"url": {
-							"raw": "https://ezra-home-backend.decklaration.com/api/auth/login/",
-							"protocol": "https",
+							"raw": "{{URL}}/api/auth/login/",
 							"host": [
-								"ezra-home-backend",
-								"decklaration",
-								"com"
+								"{{URL}}"
 							],
 							"path": [
 								"api",
@@ -679,12 +667,9 @@
 							}
 						},
 						"url": {
-							"raw": "https://ezra-home-backend.decklaration.com/api/auth/login/",
-							"protocol": "https",
+							"raw": "{{URL}}/api/auth/login/",
 							"host": [
-								"ezra-home-backend",
-								"decklaration",
-								"com"
+								"{{URL}}"
 							],
 							"path": [
 								"api",
