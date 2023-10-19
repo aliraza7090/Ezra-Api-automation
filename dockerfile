@@ -1,5 +1,5 @@
-#FROM public.ecr.aws/i3e9y2n8/node:latest
-FROM node:14
+FROM public.ecr.aws/i3e9y2n8/node:latest
+#FROM node:14
 WORKDIR /app
 RUN npm install -g newman
 COPY Ezra-Homes.postman_collection.json .
