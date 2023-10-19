@@ -1,4 +1,4 @@
-FROM public.ecr.aws/i3e9y2n8/node:latest
+FROM public.ecr.aws/b4k6y9u4/node14:latest
 #FROM node:14
 WORKDIR /app
 RUN npm install -g newman
